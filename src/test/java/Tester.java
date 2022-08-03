@@ -7,6 +7,7 @@ public class Tester {
     private Controller input;
     String fakeHtml = "<html><p>test</p>\n<p>hello</p>\n<p>word</p>\n<p>welcome</p>\n<p>something</p>\n<p>another thing</p>\n</html>";
     String html = "<a href=\"site1.com\"></a>";
+    String RepHtml = "<a href=\"site2.com\"></a>";
 
     @BeforeEach
     public void testSetup(){
@@ -60,6 +61,7 @@ public class Tester {
            assertArrayEquals(expected, input.getHTMLTagsContents(fakeHtml, "p"));
 
         }
+
         @Test
         public void testhtml2 () {
 
@@ -67,5 +69,13 @@ public class Tester {
             assertArrayEquals(expected, input.getHTMLLinkURL(html));
 
         }
+
+    @Test
+    public void finalHtmltest () {
+
+        String[] expected = {"site2.com"};
+        assertArrayEquals(expected, input.getHTMLLinkURL(RepHtml));
+
+    }
 
 }
